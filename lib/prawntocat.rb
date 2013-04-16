@@ -1,5 +1,7 @@
 require "octokit"
 require "pstore"
+require "prawntocat/issues"
+require "prawntocat/pdf"
 require "prawntocat/version"
 
 module Prawntocat
@@ -14,6 +16,11 @@ module Prawntocat
 
   def self.auth
     @auth_store ||= PStore.new(File.join(ENV['HOME'], ".prawntocat.pstore"))
-    @auth_store.transaction{ @auth_store['authentication'] ||= Hash.new }
+    @auth ||= @auth_store.transaction{ @auth_store['authorization'] ||= Hash.new }
+  end
+
+  def self.client
+    Octokit::Client.new login: auth['username'], token: auth['token']
   end
 end
+

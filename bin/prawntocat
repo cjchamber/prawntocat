@@ -4,3 +4,14 @@ require "prawntocat"
 
 Prawntocat.authenticate! unless Prawntocat.authenticated?
 
+Prawntocat::USAGE = <<USAGE
+Usage: prawntocat ACCOUNTNAME/REPONAME [PDF_NAME]
+  prawntocat nuclearsandwich/prawntocat issues.pdf
+USAGE
+
+repo = ARGV.shift
+pdf = ARGV.shift
+
+$stderr.puts(Prawntocat::USAGE) unless repo
+Prawntocat::PDF.new(repo, pdf).generate
+
