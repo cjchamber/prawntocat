@@ -10,6 +10,7 @@ somebody might.
 ## Usage
 
 Before using this gem, please think of the trees.
+
 ![trees](/trees.jpg)
 
 When you first run prawntocat, you'll need to create an OAuth Token for it's
