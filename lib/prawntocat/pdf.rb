@@ -17,9 +17,8 @@ module Prawntocat
         doc.text("Issues for #{@repo}", size: 20)
         doc.move_down 20
         issues.each do |issue|
-          doc.text("<b>#{issue.title}</b>\n")
+          doc.text("#{issue.title}\n", :style => :bold)
         end
-        doc.move_down 1
       end
     end
   end

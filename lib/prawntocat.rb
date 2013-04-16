@@ -20,7 +20,7 @@ module Prawntocat
   end
 
   def self.client
-    Octokit::Client.new login: auth['username'], token: auth['token']
+    Octokit::Client.new login: auth['username'], oauth_token: auth['token']
   end
 end
 
